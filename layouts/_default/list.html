@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto px-0">
-        <h2 class="mb-4">Publicaciones relacionadas con <span class="text-primary">{{ .Title }}</span></h2>
+        <h2 class="mb-4">Publicaciones relacionadas con <span class="text-primary">{{ .Title }}</span> se están mostrando</h2>
         <div class="bg-white shadow block">
           {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
           {{ range $paginator.Pages }}
@@ -30,7 +30,7 @@
                 <!-- Previous page. -->
                 {{ if $paginator.HasPrev }}
                 <li class="page-item">
-                  <a href="{{ $paginator.Prev.Permalink }}" class="page-link">
+                  <a href="{{ $paginator.Prev.URL }}" class="page-link">
                     &laquo;
                   </a>
                 </li>
@@ -67,7 +67,7 @@
                 <!-- Output page numbers. -->
                 {{ if eq ($.Scratch.Get "page_number_flag") true }}
                 <li class="page-item{{ if eq . $paginator }} page-item active {{ end }}">
-                  <a href="{{ .Permalink }}" class="page-link">
+                  <a href="{{ .URL }}" class="page-link">
                     {{ .PageNumber }}
                   </a>
                 </li>
@@ -76,7 +76,7 @@
                 <!-- Next page. -->
                 {{ if $paginator.HasNext }}
                 <li class="page-item">
-                  <a href="{{ $paginator.Next.Permalink }}" class="page-link">
+                  <a href="{{ $paginator.Next.URL }}" class="page-link">
                     &raquo;
                   </a>
                 </li>
